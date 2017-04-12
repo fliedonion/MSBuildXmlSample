@@ -19,10 +19,11 @@ then you can get text in output window like following:
 
 ```
 1>  Hello, world.
-1>  Hello, 0.
-1>  Hello, .
-1>  Hello, Inside.
-1>  Hello, Inside.
+1>  _SampleProperty = 0.
+1>  _SampleStringProperty = World.
+1>  _PropInsideTarget = Inside.
+1>  _PropInsideTarget = Inside. This property set in another target.
+1>  Your Computer Name is COMPUTERNAME_FROM_ENVIRONMENTVARIABLE
 1>  Hello, world!
 1>C:\path\to\your\solution\msbuildSample.targets(72,5): error : Hello, world!
 1>  This Is Parameter.

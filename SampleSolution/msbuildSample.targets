@@ -20,6 +20,8 @@ Note: To run this sample, you should import this file from csproj.
     <_PropertyForStoreValue>111</_PropertyForStoreValue>
     <_SampleProperty>0</_SampleProperty>
     <_SampleStringProperty>World</_SampleStringProperty>
+    <_PropWithCondition>Default Value</_PropWithCondition>
+    <_PropWithCondition Condition="'$(_SampleProperty)' == '0' ">Your Computer Name is $(COMPUTERNAME)</_PropWithCondition>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -29,6 +31,8 @@ Note: To run this sample, you should import this file from csproj.
       _HelloProperties;
       _HelloInnerProperty;
       _HelloInnerPropertyFromOutside;
+      _ShowPropWithCondition;
+      
       _HelloCaller;
       _EchoCaller;
       _AdderCaller;
@@ -43,21 +47,31 @@ Note: To run this sample, you should import this file from csproj.
   </Target>
 
   <Target Name="_HelloProperties">
-    <Message Text="Hello, $(_SampleProperty)." Importance="High" />
-    <Message Text="Hello, $(__SampleStringProperty)." Importance="High" />
+    <Message Text="_SampleProperty = $(_SampleProperty)." Importance="High" />
+    <Message Text="_SampleStringProperty = $(_SampleStringProperty)." Importance="High" />
+  </Target>
+
+  <Target Name="_HelloCondition" Condition=" '$(_SampleProperty)' == '1' ">
+    <Message Text="This will not display." Importance="High" />
   </Target>
 
   <Target Name="_HelloInnerProperty">
     <PropertyGroup>
       <_PropInsideTarget>Inside</_PropInsideTarget>
     </PropertyGroup>
-    <Message Text="Hello, $(_PropInsideTarget)." Importance="High" />
+    <Message Text="_PropInsideTarget = $(_PropInsideTarget)." Importance="High" />
   </Target>
 
   <Target Name="_HelloInnerPropertyFromOutside">
-    <Message Text="Hello, $(_PropInsideTarget)." Importance="High" />
+    <Message Text="_PropInsideTarget = $(_PropInsideTarget). This property set in another target." Importance="High" />
   </Target>
-  
+
+
+  <Target Name="_ShowPropWithCondition">
+    <Message Text="$(_PropWithCondition)" Importance="High" />
+  </Target>
+
+
 
   <!-- 
   UsingTask sample
