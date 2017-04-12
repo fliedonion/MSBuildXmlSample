@@ -1,6 +1,13 @@
 # MSBuildXmlSample
 Sample of MSBuild Xml and run before / after project build.
 
+## Use sample solution.
+
+* open `SampleSolution\MsBuildXmlRunBeforeOrAfterProjectBuildSample.sln` with Visual Studio.
+* rebuild.
+* see Build Output Window of Visual Studio.
+
+
 ## Use this sample with your project.
 
 example to use `msbuildSample.targets` with your project do following steps:
